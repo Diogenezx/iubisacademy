@@ -1,0 +1,123 @@
+{% include 'head.html' %}
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'semantic/dist/semantic.min.css' %}">
+<script language="JavaScript" type="text/javascript"  src="{% static 'semantic/dist/semantic.min.js' %}"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'css/video.css' %}">
+
+<style type="text/css">
+	body {
+	background-image: url(https://static.pexels.com/photos/2752/city-sunny-people-street.jpg);
+    background-size: cover;
+  
+	}
+    body > .grid {
+      height: 100%;
+    }
+    .image {
+      margin-top: -100px;
+    }
+    .column {
+      max-width: 450px;
+    }
+</style>
+<script type="text/javascript">
+		$(document)
+		.ready(function() {
+			$('.ui.form')
+				.form({
+					fields: {
+						email: {
+							identifier  : 'email',
+							rules: [
+								{
+									type   : 'empty',
+									prompt : 'Por favor digite um e-mail'
+								},
+								
+							]
+						},
+						username: {
+							identifier  : 'username',
+							rules: [
+								{
+									type   : 'empty',
+									prompt : 'Por favor digite um usuário'
+								},
+								{
+									type   : 'length[6]',
+									prompt : 'Seu usuário deve ser maior que 6 digítos'
+								}
+							]
+						},
+						password: {
+							identifier  : 'password',
+							rules: [
+								{
+									type   : 'empty',
+									prompt : 'Por favor digite uma senha'
+								},
+								{
+									type   : 'length[6]',
+									prompt : 'Sua senha deve ser maior que 6 digítos'
+								}
+							]
+						}
+					}
+				})
+			;
+		})
+	;
+</script>
+<div class="ui middle aligned center aligned grid login_vd">
+	<div class="eight wide column" style="background-color:#f3f4f5;">
+		<h1 class="ui image header">
+			<div class="content">
+				Crie sua conta
+				</div>
+		</h1>
+		<form method="POST" class="ui large form">
+		
+		{% csrf_token %}
+ <div class="ui stacked secondary  segment">
+       
+                <div class="field">
+             <div class="ui left icon input">
+            <i class="user icon"></i>
+            <input id="id_email" name="email" type="email" required placeholder="digite um e-mail">
+          </div>
+        </div>
+        <div class="field">
+             <div class="ui left icon input">
+            <i class="user icon"></i>
+            <input  autofocus="" id="id_username" maxlength="150" name="username" type="text" required placeholder="digite um usuario">
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="lock icon"></i>
+           
+             <input id="id_password1" name="password1" type="password" required  placeholder="digite uma senha">
+          </div>
+          </div>
+         
+        	<div class="field">
+         	<div class="ui left icon input">
+            <i class="lock icon"></i>
+            <input id="id_password2" name="password2" type="password" required  placeholder="digite a senha novamente">
+        </div>
+        </div>
+        </form>
+			
+			<button type="submit" class="ui fluid large red submit button">Criar conta</button>
+		 
+
+			<div class="ui error message"></div>
+
+		</form>
+
+		<div class="ui message">
+			Já tem uma conta? <a href="{% url 'accounts:login' %}">Acessar</a>
+		</div>
+	</div>
+</div>

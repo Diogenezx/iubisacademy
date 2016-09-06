@@ -1,0 +1,28 @@
+{% load static %}
+
+
+<link rel="stylesheet" type="text/css" href="{% static 'semantic/dist/semantic.min.css' %}">
+<script src="{% static 'semantic/dist/semantic.min.js' %}"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'semantic/rating/rating.min.css' %}">
+<script src="{% static 'semantic/rating/rating.min.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.3/components/dropdown.min.js">
+</script>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.3/components/dropdown.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.3/components/rating.min.js">
+</script>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.3/components/rating.min.css">
+
+
+
+
+<div align="center" class="two columns center" style="margin-top:10%;">
+ <form action="" method="POST">
+     {% csrf_token %}
+      <h2>Você realmente deseja cancelar sua inscrição?</h2>
+      <div>
+        <button type="submit" class="ui blue button">Sim, desejo</button>
+      <a class="ui red button" href="{% url 'accounts:show' %}">
+       Não, foi um engano</a>
+    </div>
+</form>
+</div>

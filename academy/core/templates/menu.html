@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+{% include 'head.html' %}
+{% load staticfiles %}
+{% if user.is_anonymous %}
+<div class="ui" style="margin-bottom:-3%; margin-left:-5%;">
+      <div class="ui large secondary inverted pointing menu">
+                 <div class="right item">
+          <a class="ui red button" href="{% url 'accounts:login' %}">Entrar</a>&nbsp; 
+
+           <a class="ui red button" href="{% url 'accounts:register' %}">Se Inscrever </a>
+                 </div>
+      </div>
+    </div>
+    {% endif %}
+
+<div class="ui inverted fixed vertical pointing menu">
+{% if user.is_anonymous %}
+  {% else %}
+  <div class="item" align="center">
+  {% if user.image %}
+    <img  class="ui circular image" width="100" height="100" src="{{ user.image.url }}">
+    {% else %}
+  <img class="ui circular image" width="100" height="100" src="{% static 'img/default.png' %}">
+  {% endif %}
+  </div>
+
+  
+  <span class="item" align="center">
+
+     <b><h3>{{ user }}</h3></b>
+    <h4>{{ user.email }}</h4>
+    
+  </span>
+  {% endif %}
+
+   <div class="item">
+    <div class="ui input">
+    
+    <input type="text" placeholder="Buscar...">
+   
+      </div>
+  </div>
+  {% if user.is_anonymous %}
+  
+   <a class="item" href="{% url 'cursos:index' %}">
+     <i class="grid layout icon"></i>Navegar
+  </a>
+ 
+       
+{% else %}
+ <a class="item" href="{% url 'cursos:index' %}">
+     <i class="grid layout icon"></i>Navegar
+  </a>
+  <a class="item" href="{% url 'accounts:show' %}">
+    <i class="checkmark box icon"></i>Seus cursos
+  </a>
+   <a class="item" href="{% url 'accounts:edit' %}">
+    <i class="edit icon"></i>Editar conta
+  </a>
+   <a class="item" href="{% url 'accounts:edit_password' %}">
+    <i class="unlock alternate icon"></i>Alterar senha
+  </a>
+     <a class="item bottom" href="{% url 'accounts:logout' %}">
+    <i class="sign out icon" ></i>Sair da AshAcademy
+  </a>
+  {% endif %}
+</div>
+

@@ -1,0 +1,39 @@
+{% include 'menu.html' %}
+{% load static %}
+<div class="ui header" style="margin-left:16%;">
+<i class="settings icon"></i>
+<div class="content">
+  Editar conta
+  <div class="sub header">Você pode editar seus dados pessoais</div>
+</div>
+    </div>
+  </div>
+ <div class="ui stackable four column very relaxed grid container" style="position:relative;">
+
+  <div class="column">
+  
+  <form class="ui form" method="post">
+Seu email atual é: {{ user.email }}
+  {% csrf_token %}
+  {% if success %}
+  <p>Dados atualizados com sucesso</p>
+  {% endif %}
+ {% for field in form %}
+ {{ form.non_field_errors }}
+<div class="ui form">
+ {{ field.label_tag }}
+ {{ field }}
+ {{ field.errors }}
+</div>
+  {% endfor %}
+  
+  <button type="submit" class="ui blue button" style="float:right; margin-top:2%;">Salvar</button>
+</form>
+  </div>
+
+</div>
+
+
+
+</body>
+</html>

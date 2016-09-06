@@ -1,0 +1,32 @@
+{% include 'menu.html' %}
+{% load static %}
+{% load cursos_tags %}
+
+ {% if messages %}
+<div class="ui success message">   
+  <i class="close icon"></i>
+  <div class="header">
+  {% for message in messages %}
+    <p>{{ message }}</p>
+  {% endfor %}
+     </div>
+   {% endif %}
+ </div>
+
+
+<div class="ui header" style="margin-left:16%;">
+<i class="settings icon"></i>
+<div class="content">
+  Seus cursos
+  <div class="sub header">Cursos que você está inscrito</div>
+</div>
+    </div>
+  </div>
+ <div class="ui stackable four column very relaxed grid container" style="position:relative;">
+ 
+  
+   {% my_courses user %}
+ 
+</div>
+</body>
+</html>

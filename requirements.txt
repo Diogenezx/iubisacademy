@@ -1,0 +1,10 @@
+defusedxml==0.4.1
+Django==1.10
+django-allauth==0.27.0
+django-posts==0.3.0
+oauthlib==1.1.2
+Pillow==3.3.1
+python3-openid==3.0.10
+requests==2.11.1
+requests-oauthlib==0.6.2
+sorl-thumbnail==12.3

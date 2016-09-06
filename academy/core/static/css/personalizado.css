@@ -1,0 +1,42 @@
+.r-menu {
+	margin-right:3% !important;
+	border:none !important;
+
+}
+.item-i:hover {
+	color: red !important;
+}
+
+
+body {
+	
+}
+
+.cs{
+	position: absolute;
+	right: 5%;
+	top:5%;	
+}
+
+.nave {
+	position: absolute;
+	color:red;
+	font-size: 20px;
+	left: 5%;
+	top:5%;
+}
+.nave:hover {
+	color:white;
+}
+
+.ui.grid.container {
+	margin-left: 15% !important;
+	position: relative !important;
+}
+
+
+.red {
+	margin-top:3%;
+	font-size: 20px;
+	color:#1377a6;
+}

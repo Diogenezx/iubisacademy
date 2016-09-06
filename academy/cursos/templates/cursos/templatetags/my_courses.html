@@ -1,0 +1,35 @@
+
+  
+  {% for enrollment in enrollments %}
+    <div class="column">
+     <div class="ui card">
+
+    <div class="ui slide masked reveal image">
+  
+    <img src="{{ enrollment.curso.image.url }}" class="visible content">
+   
+  </div>
+    <div class="content">
+
+     <a class="header" href="{% url 'cursos:announcements' enrollment.curso.slug %}">{{ enrollment.curso }}</a>
+     
+  <div class="meta">
+      <span class="date" style="text-transform:capitalize;">Por: {{ enrollment.curso.autor }}</span>
+  </div>
+  </div>
+    <div class="extra content">
+    
+     <div class="ui two buttons">
+       <a href="{% url 'cursos:announcements' enrollment.curso.slug %}" class="ui red button">Acessar
+    </a>
+    <a href="{% url 'cursos:undo_enrollment' enrollment.curso.slug %}" class="ui black button">
+  Sair</a>
+  </div>
+ </div>
+ </div>
+ </div>
+  {% empty %}
+
+  <p>Você não está inscrito em nenhum curso</p>
+
+{% endfor %}

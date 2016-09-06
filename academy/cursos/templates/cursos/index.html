@@ -1,0 +1,45 @@
+{% include 'menu.html' %}
+<h1 class="ui header" style="margin-left:16%;">
+  Cursos disponiveis
+</h1>
+<div class="ui stackable four column very relaxed grid container" style="position:relative;">
+
+{% for curso in cursos %}
+<div class="column">
+ <div class="ui card">
+ 
+  <div class="image" >
+   <img src="{{ curso.image.url }}">
+  </div>
+  <div class="content">
+    <a class="header" href="{{ curso.get_absolute_url }}">{{ curso.name }}</a>
+    <div class="meta">
+      <span class="date">{{ curso.autor }}</span>
+
+    </div>
+<div class="red">
+    <i class="student icon"></i>
+      {{ curso.value }}</div>
+    </div>
+  <div class="extra content">
+   
+      <div class="ui two buttons">
+        <a class="ui black button" href="{% url 'cursos:enrollment' curso.slug %}">Se Inscrever</a>
+       <a class="ui red button" href="{{ curso.get_absolute_url }}">Ver mais</a>
+      </div>
+  </div>
+ </div>
+ </div>
+{% empty %}
+
+<div class="ui icon message" style="margin-top:5%;">
+  <i class="notched circle loading icon"></i>
+  <div class="content">
+    <div class="header">Nenhum curso foi encontrado </div>
+    <p>Estamos fazendo uma nova verificação.</p>
+  </div>
+</div>
+</div>
+{% endfor %}
+
+</html>

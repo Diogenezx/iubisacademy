@@ -1,0 +1,53 @@
+<div class="ui yellow message">
+  <i class="star icon"></i>
+  O curso tem um novo anúncio
+</div>
+<div class="ui items">
+  <div class="item">
+    <a class="ui tiny image">
+      <img src="http://semantic-ui.com/images/avatar/large/stevie.jpg">
+    </a>
+    <div class="content">
+      <a class="header">{{ announcement.title }}</a>
+      <div class="description">
+        <p>{{ announcement.content|linebreaks }}</p>
+      </div>
+    </div>
+  </div>
+    <div class="ui comments">
+  <h3 class="ui dividing header">Comentários</h3>
+  <div class="comment">
+      {% for comment in announcement.comments.all %}
+    <div class="content">
+      <a class="author">{{ comment.user }}</a>
+      <div class="metadata">
+        <span class="date">disse à {{ comment.created_at|timesince }} atrás</span>
+      </div>
+      <div class="text">
+        {{ comment.comment|linebreaksbr}}
+      </div>
+      {% empty %}
+      <p>Nenhum comentário para este anúncio.</p>
+      {% endfor %}
+      <div class="actions">
+        <a class="reply" href="#responder">Responder</a>
+      </div>
+    </div>
+  </div>
+   <form class="ui reply form" method="POST" action="">
+   	{% csrf_token %}
+   		{{ form.non_field_errors }}
+   		{% for field in form %}
+    <div class="field" id="responder">
+    	  		
+		{{ field_label_tag }}
+		{{ field }}
+		{{ field.errors }}    
+      </div>
+    {% endfor %}
+   
+      <button type="submit" class="ui blue labeled submit icon button"><i class="icon edit"></i>Enviar comentário</button>
+ 
+  </form>
+</div>
+</div></div></div>

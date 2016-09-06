@@ -1,0 +1,110 @@
+{% include 'head.html' %}
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'semantic/dist/semantic.min.css' %}">
+<script language="JavaScript" type="text/javascript"  src="{% static 'semantic/dist/semantic.min.js' %}"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'css/video.css' %}">
+
+<style type="text/css">
+	body {
+		background-image: url(https://static.pexels.com/photos/6550/nature-sky-sunset-man.jpeg);
+    background-size: cover;
+  
+
+	}
+    body > .grid {
+      height: 100%;
+    }
+    .image {
+      margin-top: -100px;
+    }
+    .column {
+      max-width: 450px;
+    }
+</style>
+<script type="text/javascript">
+	  $(document)
+    .ready(function() {
+      $('.ui.form')
+        .form({
+          fields: {
+            email: {
+              identifier  : 'email',
+              rules: [
+                {
+                  type   : 'empty',
+                  prompt : 'Por favor digite seu e-mail'
+                },
+                {
+                  type   : 'email',
+                  prompt : 'Por favor digite seu e-mail'
+                }
+              ]
+            },
+            username: {
+              identifier  : 'username',
+              rules: [
+                {
+                  type   : 'empty',
+                  prompt : 'Por favor digite seu usuário'
+                },
+                
+              ]
+            },
+            password: {
+              identifier  : 'password',
+              rules: [
+                {
+                  type   : 'empty',
+                  prompt : 'Por favor digite sua senha'
+                },
+               
+              ]
+            }
+          }
+        })
+      ;
+    })
+  ;
+</script>
+<div class="ui middle aligned center aligned grid login_vd">
+  <div class="eight wide column" style="background-color:#f3f4f5;">
+    <h1 class="ui image header">
+      <div class="content">
+      Entrar
+        </div>
+    </h1>
+    <form method="POST" class="ui form large">
+    {% csrf_token %}
+      <div class="ui stacked secondary  segment">
+          
+          <div class="field">
+            <div class="ui left icon input">
+           
+            <i class="user icon"></i>
+             <input type="text" name="username" placeholder="digite seu usuario aqui">
+          </div>
+        </div>
+        
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="lock icon"></i>
+            <input type="password" name="password" placeholder="senha">
+          </div>
+
+        </div>
+       <a style="float:right; margin-right:2%;" href="{% url 'accounts:password_reset' %}">Esqueceu sua senha?</a>
+       <br>
+  		 <br>
+  		<button type="submit" class="ui red fluid big submit button">Entrar</button>
+     
+
+      <div class="ui error message"></div>
+
+    </form>
+
+    <div class="ui message">
+      Não é cadastrado? <a href="{% url 'accounts:register' %}">Inscreva-se</a><br>
+          </div>
+     </div>
+</div>
