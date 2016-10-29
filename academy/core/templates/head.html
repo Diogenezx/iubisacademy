@@ -1,4 +1,6 @@
+<!-- começo-head.html -->
 {% load static %}
+
 <head>
   <!-- Standard Meta -->
   <meta charset="utf-8" />
@@ -6,7 +8,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
   <!-- Site Properties -->
-  <title>Aisha</title>
+  <title>iubis| Seu marketplace de cursos online</title>
+  <link rel="shortcut icon" type="image/png" href="{% static 'img/favicon.png' %}"/>
+
   <link rel="stylesheet" type="text/css" href="{% static 'semantic/dist/components/reset.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'semantic/dist/components/site.css' %}">
 
@@ -15,10 +19,9 @@
   <link rel="stylesheet" type="text/css" href="{% static 'semantic/dist/components/header.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'semantic/dist/components/image.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'semantic/dist/components/menu.css' %}">
-  <link rel="stylesheet" type="text/css" href="{% static 'css/video.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'css/personalizado.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'css/cards.css' %}">
-  <link rel="stylesheet" type="text/css" href="{% static 'css/kill.css' %}">
+ 
 
   <link rel="stylesheet" type="text/css" href="{% static 'semantic/dist/components/divider.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'semantic/dist/components/dropdown.css' %}">
@@ -33,6 +36,10 @@
   <link rel="stylesheet" type="text/css" href="{% static 'semantic/dist/components/card.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'semantic/dist/components/form.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'semantic/dist/components/message.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'semantic/dist/components/table.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'semantic/dist/components/tab.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'semantic/dist/components/accordion.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'semantic/dist/components/label.css' %}">
 
   <style type="text/css">
 
@@ -130,6 +137,9 @@
   <script src="{% static 'semantic/dist/components/sidebar.js' %}"></script>
   <script src="{% static 'semantic/dist/components/transition.js' %}"></script>
   <script src="{% static 'semantic/dist/components/modal.js' %}"></script>
+  <script src="{% static 'semantic/dist/components/accordion.js' %}"></script>
+  <script src="{% static 'semantic/dist/components/tab.js' %}"></script>
+  <script src="{% static 'semantic/dist/semantic.js' %}"></script>
   <script>
  
     
@@ -137,28 +147,18 @@
 
   $(document)
     .ready(function() {
-       
-
-         $("video").prop('muted', true); 
-      // fix menu when passed
-      $('.masthead')
-        .visibility({
-          once: false,
-          onBottomPassed: function() {
-            $('.fixed.menu').transition('fade in');
-          },
-          onBottomPassedReverse: function() {
-            $('.fixed.menu').transition('fade out');
-          }
-        })
-      ;
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
+  
+        $(document).ready(function() {    
+        $('.menu .item').tab() ; });
+        //Clique e Zoom
+        $(".grow").click(function() 
+          {window.location = $(this).find("a").attr("href"); 
+          return false;
+        });
 
     })
   ;
   </script>
 </head>
+
+<!-- fim-head.html -->

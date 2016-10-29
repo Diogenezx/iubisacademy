@@ -1,62 +1,83 @@
 {% load static %}
 
-
-<!---CSS-->
-<link rel="stylesheet" type="text/css" href="{% static 'semantic/dist/semantic.min.css' %}">
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.3/components/dropdown.min.css">
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/components/comment.min.css">
-<!---CSS-->
-
+{% include 'menu.html' %}
+<h1 class="ui header">{{ curso.name }}</h1>
+<a class="ui red button" href="{% url 'cursos:lessons' curso.slug %}">Acessar aulas</a>
 <!---BLOCO DO VIDEO-->
-  <div class="ui grid" style="background-color:#262626; height:90%;">
-  <div class="ten wide column">
+<div class="ui grid">
+<div class="eight wide column">
 
-  <iframe width="60%" height="50%" src="https://www.youtube.com/embed/IGq6LxjiYZA" frameborder="0" allowfullscreen style="margin:10% 0 10% 20%"></iframe>
-
-    </div>
-
- 
-    </div>
+</div>
+<div class="eight wide column">
+<div class="backgroundplayer" align="center">
+<div class="jwplayer-a" align="center">
+<script src="//content.jwplatform.com/players/lhVM7anR-LvXcG1iQ.js"></script>
+</div></div></div></div>
 <!---BLOCO DO VIDEO^-->
 
 <!---MENU-->
-  {% for announcement in announcements %}
-<div class="ui stackable menu" style="position:relative;">
 
-  <div class="item">
-    <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSmyADA-nBibGhuziW_a0k9VqFmIJ7Vl1K299r_BHycsyXb14WG">
+<div class="ui stackable large menu margin-mn">
+<div class="item">
+    <img src="{% static 'img/logo.png' %}">
   </div>
-  <a class="item" href="#dashboard">Dashboard</a>
-  <a class="item" href="#conteudo">Conteúdo</a>
-  <a class="item" id="bt" href="{% url 'cursos:show_announcement' curso.slug announcement.pk %}#anuncios">Anúncios</a>
-  <a class="item" href="#per">Perguntas e Respostas</a>
-
+  <a class="item" href="#descricao">Descrição</a>
+  <a class="item" href="#anuncios">Anúncios</a>
+  {% for lesson in lessons %}
+  <a class="item" href="{% url 'cursos:lessons' curso.slug %}">Conteúdo</a>
+  {% endfor %}
+  <a class="item">Perguntas</a>
 </div>
-{% empty %}
-Nenhum anúncio criado
-{% endfor %}
-<!---MENU-->
 
-<div class="ui grid" id="anuncios" style="margin:5%;">
-<div class="eight wide column">
+
+
+
+<div class="ui grid">
+
+<div class="ten wide column" id="descricao" style="margin:2% 0 1% 5%;">
+<h2>Descrição do Curso</h2>
+{{ curso.description|linebreaks }}
+</div>
+
+<div class="ten wide column" id="anuncios" style="margin:2% 0 1% 5%;">
 <h2>Anúncios</h2>
 {% include 'cursos/show_announcement.html' %}
 </div>
+
+<div class="eight wide column" id="conteudo" style="margin:5%;">
+<h2>Conteúdo do Curso</h2>
+<table class="ui inverted red large unstackable table">
+  <tbody>
+    <tr>
+      <td>Seja bem vindo</td>
+      <td></td>
+      <td class="tempo">00:03:00</td>
+    </tr>
+    <tr>
+      <td>Aula 1 - Introdução as vitaminas</td>
+      <td></td>
+      <td class="tempo">00:05:00</td>
+    </tr>
+    <tr>
+      <td>Aula 2 - Introdução as minerais</td>
+      <td></td>
+      <td class="tempo">00:09:00</td>
+    </tr>
+    <tr>
+      <td>Aula 3 - Introdução a ácidos graxos</td>
+      <td></td>
+      <td class="tempo">00:06:00</td>
+    </tr>
+    <tr>
+      <td>Aula 4 - Introdução a proteínas</td>
+      <td></td>
+      <td class="tempo">00:12:00</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+
 </div>
 
 
-</div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script type="text/javascript" src="http://arrow.scrolltotop.com/arrow83.js"></script>
-
-
-
-<!---Javascript-->
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/components/accordion.js">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.3/components/dropdown.min.js"></script>
-<script src="{% static 'semantic/dist/semantic.min.js' %}"></script>
-<script src="{% static 'js/event_class.js' %}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/components/accordion.js"></script>
-<script src="{% static 'js/jquery-3.1.0.min.js' %}"></script>
-<!---^Javascript-->
 

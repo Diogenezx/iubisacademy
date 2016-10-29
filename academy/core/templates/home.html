@@ -1,91 +1,10 @@
 <!DOCTYPE html>
-{% load static %}
 <html>
-{% include 'head.html' %}
+<head>
+  <title></title>
+  <link rel="stylesheet" type="text/css" href="https://v4-alpha.getbootstrap.com/dist/css/bootstrap.min.css">
+</head>
 <body>
 
-<!-- Page Contents -->
-<div class="pusher">
-
-
-<video id="my-video" class="video" autoplay="autoplay" loop="loop" muted="" width="300" height="150">
-  <source src="{% static 'video/350950598.mp4' %}" type="video/mp4" />
-  <source src="{% static 'video/350950598.ogv' %}" type="video/ogg" />
-  <source src="{% static 'video/350950598.m4v' %}" type="video/m4v" />
-  <source src="{% static 'video/350950598.webm' %}" type="video/webm" /></video>
-  <!-- /video -->
-  <div class="ui inverted vertical masthead center aligned segment rmv">
-    <div class="ui container">
-      <div class="ui large secondary inverted pointing menu">
-                 <div class="right item">
-          <a class="ui red button" href="{% url 'accounts:login' %}">Entrar</a>
-                 </div>
-      </div>
-    </div>
-
-    <div class="ui text container">
-      <h1 class="ui inverted header">
-       Descubra ao máximo
-      </h1>
-      <h2>Explore suas verdadeiras habilidades</h2>
-      <a href="{% url 'cursos:index' %}">
-      <div class="ui red huge button" id="open">Assista os melhores cursos <i class="right arrow icon"></i></div></a>
-    </div>
-</div>
-  <div class="ui vertical stripe segment ab">
-    <div class="ui middle aligned  grid container">
-      <div class="row">
-        <div class="eight wide column">
-          <h3 class="ui header">Uma grande descoberta</h3>
-          <p>Você possue grandes habilidades, que tal explorar?</p>
-          <h3 class="ui header">Você pode ser o que quiser</h3>
-          <p>O poder da escolha foi dado a você, Aprenda o que quiser em qualquer lugar, Seja o seu melhor!</p>
-        </div>
-        <div class="six wide right floated column">
-          <img src="http://www.breosolutions.com/wp-content/uploads/2016/07/Kid-Supergirl.jpg" class="ui large bordered circular image">
-        </div>
-      </div>
-      <div class="row">
-        <div class="center aligned column">
-          <a class="ui huge button" href="{% url 'accounts:register' %}">Quero me inscrever</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
- 
-
-  <div class="ui inverted vertical footer segment">
-    <div class="ui container">
-      <div class="ui stackable inverted divided equal height stackable grid">
-        <div class="three wide column">
-          <h4 class="ui inverted header">Sobre</h4>
-          <div class="ui inverted link list">
-            <a href="#" class="item">Perguntas Frequentes</a>
-            <a href="#" class="item">Termos de Uso</a>
-            <a href="#" class="item">Privacidade</a>
-            <a href="#" class="item">Preferências de cookies</a>
-          </div>
-        </div>
-        <div class="three wide column">
-          <h4 class="ui inverted header">Serviços</h4>
-          <div class="ui inverted link list">
-            <a href="#" class="item">Conta</a>
-            <a href="#" class="item">Suporte</a>
-            <a href="#" class="item">Resgatar Presente</a>
-            <a href="#" class="item">Imprensa</a>
-          </div>
-        </div>
-        <div class="seven wide column">
-          <h4 class="ui inverted header">Dúvidas?</h4>
-          <p>Ligue para 0800-000-000</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
 </body>
-
 </html>

@@ -1,39 +1,49 @@
 {% include 'menu.html' %}
 {% load static %}
-<div class="ui header" style="margin-left:16%;">
-<i class="settings icon"></i>
-<div class="content">
-  Editar conta
-  <div class="sub header">Você pode editar seus dados pessoais</div>
-</div>
-    </div>
-  </div>
- <div class="ui stackable four column very relaxed grid container" style="position:relative;">
 
-  <div class="column">
+<div class="container">
+
+<div class="row">
+<div class="left col s12 m2 l2">
+  <ul>
   
-  <form class="ui form" method="post">
-Seu email atual é: {{ user.email }}
+  <li class="menu-produtor title">MINHA CONTA</li>
+  <li class="menu-produtor">Alterar senha</li>
+  <li class="menu-produtor selected">Perfil</li>
+  <li class="menu-produtor">Financeiro</li>
+  <li class="menu-produtor">Notificações</li>
+  <li class="menu-produtor">Preferências</li> 
+  <li class="menu-produtor">Privacidade</li>
+  
+  </ul>
+
+</div>
+
+<div class="input-field col m10">
+<h5>Bem vindo, {{ user }}</h5>
+
+  <a class="btn" onclick="Materialize.toast('Seu usuário é {{ user.username }}', 4000)">Qual meu usuário?</a>
+<a class="btn" onclick="Materialize.toast('Seu email é {{ user.email }}', 4000)">Qual meu email?</a>
+
+  <form class="validate" action="" method="post">
   {% csrf_token %}
   {% if success %}
   <p>Dados atualizados com sucesso</p>
   {% endif %}
+
  {% for field in form %}
  {{ form.non_field_errors }}
-<div class="ui form">
- {{ field.label_tag }}
  {{ field }}
- {{ field.errors }}
-</div>
+
+
   {% endfor %}
-  
-  <button type="submit" class="ui blue button" style="float:right; margin-top:2%;">Salvar</button>
+  <br>
+  <button type="submit" class="btn waves-effect waves-light btn red">Salvar</button>
 </form>
-  </div>
 
 </div>
-
-
+</div>
+</div>
 
 </body>
 </html>

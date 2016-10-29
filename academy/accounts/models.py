@@ -6,6 +6,7 @@ from django.contrib.auth.models import (AbstractBaseUser, PermissionsMixin,
 from django.conf import settings
 #UserManager is a manager, implemetation importants functions in django users
 
+#Usuário
 class User (AbstractBaseUser, PermissionsMixin):
 
 	username = models.CharField(
@@ -41,11 +42,11 @@ class Meta:
 	verbose_name = 'Usuário'
 	verbose_name_plural = 'Usuários'		
 
+#Resetar senha
 class PasswordReset(models.Model):
 
 	user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name='Usuário', )
 	related_name = 'resets'
-	
 	key = models.CharField('Chave', max_length=100, unique=True)
 	created_at = models.DateTimeField('Criado em', auto_now_add=True)
 	confirmed = models.BooleanField('Confirmado!', default=False, blank=True)

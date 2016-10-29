@@ -1,0 +1,86 @@
+{% include 'head.html' %}
+<body>
+
+<script type="text/javascript">
+		   
+	function timer(time,update,complete) {
+		var start = new Date().getTime();
+		var interval = setInterval(function() {
+		var now = time-(new Date().getTime()-start);
+
+			if( now <= 0) {
+				clearInterval(interval);
+				complete();
+			}
+			else update(Math.floor(now/1000)); },100);
+				timer(6000, // milliseconds
+		function(timeleft) { 
+			document.getElementById('timer').innerHTML = "Reprodução automática em "+timeleft;},
+		function() { 
+			document.getElementById('btnProx').click();
+			console.log("Reprodução automática foi ativada");
+		});}
+
+	window.onload = function(){	
+
+		jwplayer().seek(9); 
+		jwplayer("myElement").on('complete', function(){
+		alert("O evento video concluir foi executado com sucesso");
+		if (document.getElementById('btnProx')) {
+		document.getElementById('btnProx').click();
+
+	}});}
+
+
+</script>
+{% if lesson.get_prev.file %} 
+<a href="{% url 'cursos:lesson' curso.slug lesson.get_prev.id %}">
+<button class="ui button blue left floated">Voltar</button>
+</a>
+{% endif %}
+
+{% if lesson.get_next.file %} 
+<script type="text/javascript">
+	window.onload = function(){	
+	jwplayer().addButton(
+        "http://i.imgur.com/X0X7ccu.png",
+        "Próximo", 
+        function() {
+           window.open('{% url 'cursos:lesson' curso.slug lesson.get_next.id %}', "_self");
+        },
+        "proximo"
+);		}
+
+</script>{% endif %}
+
+
+
+<div id="myElement">Carregando player</div>
+
+<script src="https://content.jwplatform.com/libraries/LvXcG1iQ.js"></script>
+<script type="text/javascript">
+
+	var playerInstance = jwplayer("myElement")
+	playerInstance.setup({
+	height: "100",
+	width: "100%",
+	aspectratio: "16:9",
+	{% if curso.image %}
+	image: "{{ curso.image.url }}",
+	{% else %}
+	image: "http://madebymemm.com/site/wp-content/themes/KOLM3/images/empty_cart.png",
+	{% endif %}
+	sources: [{
+		 file: "http://127.0.0.1:8000{{ lesson.file.url }}",
+	   }],
+		 tracks: [{
+				title: "{{ lesson }}",
+				label: "Brazilian",
+				"default": true
+		 }]
+  });
+
+</script>
+
+
+</body>

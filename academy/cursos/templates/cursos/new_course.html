@@ -1,0 +1,29 @@
+{% include 'menu.html' %}
+ 
+
+
+ <div class="container">
+
+ <div class="col s12 m10 l10">
+ <h3 style="font-weight: 300;">Criar novo curso</h3>
+	<h5 style="font-weight: 200;">Preencha os campos abaixo</h5>
+	
+	<form class="validate" action="" method="POST" enctype="multipart/form-data">
+{% csrf_token %}
+<script type="text/javascript">
+	$(document).ready(function() {
+    $('select').material_select();
+</script>
+{% for field in form %}
+{{ field.errors }}
+{{ field.label }}
+{{ field }}<br>
+{% endfor %}<br>
+<button class="btn waves-effect waves-light btn blue" type="submit" name="action">Criar curso
+<i class="material-icons right">send</i></button><br>	
+</form>
+<br>
+	</div>
+	</div>      
+
+</div>

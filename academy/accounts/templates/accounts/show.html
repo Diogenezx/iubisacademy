@@ -2,7 +2,7 @@
 {% load static %}
 {% load cursos_tags %}
 
- {% if messages %}
+{% if messages %}
 <div class="ui success message">   
   <i class="close icon"></i>
   <div class="header">
@@ -14,19 +14,17 @@
  </div>
 
 
-<div class="ui header" style="margin-left:16%;">
-<i class="settings icon"></i>
-<div class="content">
-  Seus cursos
-  <div class="sub header">Cursos que você está inscrito</div>
-</div>
-    </div>
-  </div>
- <div class="ui stackable four column very relaxed grid container" style="position:relative;">
- 
+
+<div class="container">
+
+<div class="row">
+ <h4>Seus cursos</h4>
   
    {% my_courses user %}
  
 </div>
+
+ 
+            
 </body>
 </html>

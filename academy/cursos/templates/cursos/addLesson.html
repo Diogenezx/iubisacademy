@@ -1,0 +1,56 @@
+{% include 'menu.html' %}
+{% load cursos_tags %}
+	
+<style type="text/css">
+	a { text-decoration: none;
+	color: inherit; }
+	.chip {
+		margin-top: 1%;
+		background: #f6f7f9;
+		color: #656565;
+	}
+	.add_new {background-color: #f6f7f9 !important;}
+	.add_new:hover {
+		cursor:pointer;
+		background-color: #1c3653 !important;
+		color:	#ffffff !important;
+	}
+	
+	.aestilo {
+		color: inherit; /* blue colors for links too */
+		text-decoration: inherit; /* no underline */
+	}
+	.value {
+		width: 10%;
+		height: 100%;
+		min-height: 100%
+		background-color: red;
+	}
+</style>
+
+ <div class="container">
+
+
+{% if messages %}
+{% for message in messages %}
+<p>{{ message }}</p>
+{% endfor %}
+{% endif %}
+ <div class="col s12 m10 l10">
+ <h3 style="font-weight: 300;">Aulas</h3>
+	<h5 style="font-weight: 200;">{{ curso }}</h5>
+
+	<form class="validate" action="" method="POST" enctype="multipart/form-data">
+{% csrf_token %}
+{% for field in form %}
+{{ field.errors }}
+{{ field }}<br>
+{% endfor %}<br>
+<button class="btn waves-effect waves-light btn blue" type="submit" name="action">Criar curso
+<i class="material-icons right">send</i></button><br>	
+</form>
+<br>
+	</div>
+	</div>      
+
+</div>   

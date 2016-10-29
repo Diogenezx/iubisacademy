@@ -1,0 +1,38 @@
+<!-- Página Seus Cursos -->
+{% include 'menu.html' %}
+
+<div class="container">
+<div class="row">
+<div class="col s12 m4 l4">
+{% if curso.image.url %}
+<img class="responsive-img" src="{{ curso.image.url }}"></div>
+{% else %}
+<img class="responsive-img" src="http://madebymemm.com/site/wp-content/themes/KOLM3/images/empty_cart.png"></div>
+{% endif %}
+
+<h3>{{ curso }}</h3>
+
+<div class="col s12 m6 l6">
+<h6 style="font-weight: 300;">{{ curso.description|truncatewords:40 }}</h6></div></div>
+<h4 style="font-weight: 300;">Seu progresso no curso</h4>
+<div class="progress">
+      <div class="determinate" style="width: 70%" alt="70%"></div>
+  </div>
+
+{% for lesson in lessons %}
+
+<ul class="collapsible" data-collapsible="accordion">
+    <li>
+     <div class="collapsible-header"><i class="material-icons">filter_drama</i>{{ lesson }}
+     <a href="{% url 'cursos:lesson' curso.slug lesson.pk %}">
+     <i class="right large material-icons">play_arrow</i></a></div>
+     <div class="collapsible-body"><p>{{ lesson.description|linebreaks }}</p></div>
+    </li>
+ 
+</ul>
+
+
+{% empty %}
+Nenhuma aula encontrada
+{% endfor %}
+</div>

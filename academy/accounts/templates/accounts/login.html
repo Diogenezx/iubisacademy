@@ -1,17 +1,9 @@
 {% include 'head.html' %}
 {% load static %}
 
-<link rel="stylesheet" type="text/css" href="{% static 'semantic/dist/semantic.min.css' %}">
-<script language="JavaScript" type="text/javascript"  src="{% static 'semantic/dist/semantic.min.js' %}"></script>
-<link rel="stylesheet" type="text/css" href="{% static 'css/video.css' %}">
-
+<div id="top-login"></div>
 <style type="text/css">
-	body {
-		background-image: url(https://static.pexels.com/photos/6550/nature-sky-sunset-man.jpeg);
-    background-size: cover;
-  
 
-	}
     body > .grid {
       height: 100%;
     }
@@ -67,8 +59,8 @@
     })
   ;
 </script>
-<div class="ui middle aligned center aligned grid login_vd">
-  <div class="eight wide column" style="background-color:#f3f4f5;">
+<div class="ui middle aligned center aligned stackable grid container">
+  <div class="eight wide column">
     <h1 class="ui image header">
       <div class="content">
       Entrar
@@ -76,7 +68,7 @@
     </h1>
     <form method="POST" class="ui form large">
     {% csrf_token %}
-      <div class="ui stacked secondary  segment">
+      <div class="ui stacked secondary segment" style="border-radius:3%;">
           
           <div class="field">
             <div class="ui left icon input">
@@ -96,7 +88,7 @@
        <a style="float:right; margin-right:2%;" href="{% url 'accounts:password_reset' %}">Esqueceu sua senha?</a>
        <br>
   		 <br>
-  		<button type="submit" class="ui red fluid big submit button">Entrar</button>
+  		<button type="submit" class="ui blue fluid big submit  button">Entrar</button>
      
 
       <div class="ui error message"></div>

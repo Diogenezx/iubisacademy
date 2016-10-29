@@ -74,4 +74,11 @@ class EditAccountForm(forms.ModelForm):
 
 		class Meta:
 			  model = User
-			  fields = ['username', 'email', 'name']		
+			  fields = ['username', 'name', 'email']
+			  widgets={
+					  "username":forms.TextInput(attrs={'placeholder':'Usuário'}),
+					  "email":forms.TextInput(attrs={'placeholder':'Novo email'}),
+					  "name":forms.TextInput(attrs={'placeholder':'Nome'}),
+					 
+
+				  }	

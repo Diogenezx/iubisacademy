@@ -1,0 +1,84 @@
+{% include 'menu.html' %}
+{% load cursos_tags %}
+	
+<style type="text/css">
+	a { text-decoration: none;
+	color: inherit; }
+	.chip {
+		margin-top: 1%;
+		background: #f6f7f9;
+		color: #656565;
+	}
+	.add_new {background-color: #f6f7f9 !important;}
+	.add_new:hover {
+		cursor:pointer;
+		background-color: #1c3653 !important;
+		color:	#ffffff !important;
+	}
+	
+	.aestilo {
+		color: inherit; /* blue colors for links too */
+		text-decoration: inherit; /* no underline */
+	}
+	.value {
+		width: 10%;
+		height: 100%;
+		min-height: 100%
+		background-color: red;
+	}
+</style>
+
+ <div class="container">
+
+
+{% if messages %}
+{% for message in messages %}
+<p>{{ message }}</p>
+{% endfor %}
+{% endif %}
+ <div class="col s12 m10 l10">
+ <h3 style="font-weight: 300;">Área de produção</h3>
+	<h5 style="font-weight: 200;">Meus cursos</h5>
+
+	<ul class="collection">
+		{% for curso in cursos %}
+	
+		<li class="collection-item avatar">
+		{% if curso.image %}
+		<img src="{{ curso.image.url }}" alt="" class="circle">
+		{% else %}
+		 <img src="http://madebymemm.com/site/wp-content/themes/KOLM3/images/empty_cart.png" alt="" class="circle">
+		{% endif %}
+			<span class="title"><strong>{{ curso }}</strong></span>
+			<p>
+				 {{ curso.description|truncatewords:30 }}
+			</p>
+
+		
+  <div class="chip">
+  <a href="{% url 'cursos:CursoUpdate' curso.id %}"> Editar informações do curso</a>
+  </div>
+  <div class="chip">
+  <a href="{% url 'cursos:addLesson' curso.slug %}">Adicionar aulas</a>
+  </div>
+   <div class="chip">
+  <a href="{% url 'cursos:CursoUpdate' curso.id %}">Estatísticas do curso</a>
+  </div>
+
+
+			
+			<a onclick="return confirm('Tem que certeza que quer apagar esse curso?')" href="{% url 'cursos:delete_course' curso.id %}" class="secondary-content"><i class="material-icons">delete</i></a>
+			
+		</li>
+		{% empty %}
+		Você não adicionou nenhum curso
+		{% endfor %}
+	
+		<a class="aestilo" href="{% url 'cursos:addCourse' %}"><li class="collection-item avatar add_new">
+		<h4 class="center">Adicionar novo</h4>
+		</li></a>
+	</ul>
+	</div>
+	</div>      
+
+</div>

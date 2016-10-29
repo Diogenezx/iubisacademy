@@ -1,20 +1,38 @@
 {% include 'head.html' %}
 
-     
+{% load static %}
+{% if curso.image_capa %}
+<style type="text/css">
+  .hero:before {
+
+    background: url("{{ curso.image_capa.url }}") !important;
+    background-size: cover !important;
+   
+}
+
+</style>
+ {% else %}
+ <style type="text/css">
+  .hero:before {
+    background: url("https://newevolutiondesigns.com/images/freebies/abstract-facebook-cover-6.jpg") !important;
+    background-size: cover !important;
+   
+}
+
+</style>
+ {% endif %}    
 <div class="movie-card">
-  
   <div class="container-c">
-    
-    <a href="#"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/hobbit_cover.jpg" alt="cover" class="cover" /></a>
-        
+   
     <div class="hero">
-    <a href="/" class="nave">Navegar<i class="dropdown icon"></i></a>
-            <button class="ui blue large button cs">
+    <a href="/" class="nave"><i class="grid layout icon"></i>Navegar</a>
+           <!-- <a href="{% url 'accounts:show' %}"> <button class="ui teal button cs">-->
+            <a href="{% url 'accounts:show' %}"> <button class="ui inverted button cs">
           Seus cursos
-      </button>
-      <div class="details">
+      </button></a>
+      <div class="ui details">
       
-        <div class="title1">{{ curso.name }} <span class="valor">{{ curso.value }}</span></div>
+        <div class="title1">{{ curso.name }} <span class="valor">Promoção</span></div>
 
         <div class="title2">{{ curso.autor }}</div>    
         
@@ -30,17 +48,19 @@
     <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
     <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
   </fieldset>
-{% if user.is_approved %}
+
+
+{% if enrollment.is_approved %}
 <a href="{% url 'cursos:enrollment' curso.slug %}">
-<button class="ui red button">
+<button class="ui inverted blue button">
   Acessar curso
 </button></a>
 {% else %}
 <a href="{% url 'cursos:enrollment' curso.slug %}">
 <button class="ui red button">
-  Inscreva-se
+  Adquirir por {{ curso.value }}
 </button></a>
-{% endif %}        
+{% endif %}      
       </div> <!-- end details -->
       
     </div> <!-- end hero -->
@@ -48,12 +68,13 @@
     <div class="description">
       
       <div class="column1">
-        <span class="tag">programação</span>
-        <span class="tag">python</span>
-        <span class="tag">desenvolvimento</span>
+        <span class="tag"></span>
+        <span class="tag"></span>
+     
       </div> <!-- end column1 -->
       
       <div class="column2">
+      <a href="{{ curso.categoria.get_absolute_url }}">{{ curso.categoria }}</a>
         <h2>Descrição do curso</h2>
         <p>{{ curso.description }}</p>
         
@@ -78,6 +99,6 @@
       </div> <!-- end column2 -->
     </div> <!-- end description -->
     
-   
+
   </div> <!-- end container -->
 </div> <!-- end movie-card -->

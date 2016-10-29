@@ -1,44 +1,58 @@
+{% load static %}
 {% include 'menu.html' %}
-<h1 class="ui header" style="margin-left:16%;">
-  Cursos disponiveis
-</h1>
-<div class="ui stackable four column very relaxed grid container" style="position:relative;">
 
+
+<div class="container">
+<div class="row">
+<div class="col s12 center" style="margin-top: 5%; margin-bottom: 5%;">
+  <form method="GET" action="">
+   <div class="input-field">
+          <input id="search" type="search" name="q" value="{{ request.GET.q }}">
+          <label for="search"><i class="material-icons">search</i></label>
+          <i class="material-icons">close</i>
+          <button class="waves-effect waves-light btn blue lighten-1" type="submit">buscar</button>
+      </div>
+
+        
+  </form>
+
+  <div class="results"></div>
+ </div>
+ </div>
+ <div class="row">
+
+<h4 style="margin-left: 1%;">Em alta</h4>
 {% for curso in cursos %}
-<div class="column">
- <div class="ui card">
- 
-  <div class="image" >
+ <div class="col s12 m4 l3">
+            
+ <div class="ui fluid card grow" style="margin-top: 5%;">
+  <div class="image">
+    <div class="ui large labels" style="position:absolute; background:none !important; bottom:0;">
+  <a class="ui blue label">
+    {{ curso.value }}
+  </a>
+    </div>
+    {% if curso.image %}
    <img src="{{ curso.image.url }}">
+   {% else %}
+   <img src="http://madebymemm.com/site/wp-content/themes/KOLM3/images/empty_cart.png">
+   {% endif %}
   </div>
   <div class="content">
-    <a class="header" href="{{ curso.get_absolute_url }}">{{ curso.name }}</a>
+    <a class="header" href="{{ curso.get_absolute_url }}">{{ curso.name|truncatewords:6 }}</a>
     <div class="meta">
       <span class="date">{{ curso.autor }}</span>
 
-    </div>
-<div class="red">
-    <i class="student icon"></i>
-      {{ curso.value }}</div>
-    </div>
-  <div class="extra content">
-   
-      <div class="ui two buttons">
-        <a class="ui black button" href="{% url 'cursos:enrollment' curso.slug %}">Se Inscrever</a>
-       <a class="ui red button" href="{{ curso.get_absolute_url }}">Ver mais</a>
-      </div>
   </div>
+     
+    </div>
+    </div>
  </div>
- </div>
+ 
 {% empty %}
-
-<div class="ui icon message" style="margin-top:5%;">
-  <i class="notched circle loading icon"></i>
-  <div class="content">
-    <div class="header">Nenhum curso foi encontrado </div>
-    <p>Estamos fazendo uma nova verificação.</p>
+Sua pesquisa não retornou nenhum curso
+    <p>Tente fazer outra pesquisa</p>
   </div>
-</div>
 </div>
 {% endfor %}
 

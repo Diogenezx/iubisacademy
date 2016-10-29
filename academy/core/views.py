@@ -13,5 +13,4 @@ def dash (request):
 	return render(request, 'dashboard.html')
 
 def base (request):
-	return render(request, 'base_home.html')
-
+	return render(request, 'base.html')

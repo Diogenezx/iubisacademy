@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html><!-- começo-material.html -->
+{% load static %}
+
+  <head>
+   <link rel="stylesheet" type="text/css" href="{% static 'semantic/dist/components/card.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="shortcut icon" type="image/png" href="{% static 'img/favicon.png' %}"/>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+<title>Materialize carregado</title>
+<!-- fim-material.html -->
+<script type="text/javascript">
+  $(document).ready(function() {
+  $('select').material_select();   
+  $(".button-collapse").sideNav();
+  $('.collapsible').collapsible({ accordion : false});
+  $('.fixed-action-btn').openFAB();
+  $(".dropdown-button").dropdown({ hover: false});
+  });
+  
+</script>
+    
+  <style type="text/css">
+  body {
+    background-color: #edeef0;
+    color: #285473;
+  }
+  	.menu-produtor:hover {
+  		cursor: pointer;
+  		background-color: #90caf9;
+  		color: #ffffff;
+  	}
+  	.menu-produtor {
+  		padding: 6%;
+  		
+  	}
+  	.menu-produtor.selected {
+  		background-color: #64b5f6;
+  		color: #ffffff;
+  		padding: 6%
+  		
+  	}
+  	.menu-produtor.title {
+  		font-size: 1em;
+  		font-weight: 500;
+  	}
+  	.menu-produtor.title:hover {
+  		background-color: inherit;
+  		color: inherit;
+  	}
+  </style>  
+  </head>  

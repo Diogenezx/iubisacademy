@@ -1,19 +1,26 @@
+
+{% for announcement in announcements %}
 <div class="ui yellow message">
   <i class="star icon"></i>
-  O curso tem um novo anúncio
+  Anúncios do curso abaixo
 </div>
 <div class="ui items">
   <div class="item">
-    <a class="ui tiny image">
-      <img src="http://semantic-ui.com/images/avatar/large/stevie.jpg">
-    </a>
+  
     <div class="content">
-      <a class="header">{{ announcement.title }}</a>
+      <h1 class="header"> 
+      <a class="ui avatar image">
+    {% if user.image %}
+      <img src="{{ user.image.url }}">
+      {% else %}
+      {% endif %}
+    </a>{{ announcement.title }}</h1>
       <div class="description">
         <p>{{ announcement.content|linebreaks }}</p>
       </div>
     </div>
   </div>
+
     <div class="ui comments">
   <h3 class="ui dividing header">Comentários</h3>
   <div class="comment">
@@ -27,13 +34,16 @@
         {{ comment.comment|linebreaksbr}}
       </div>
       {% empty %}
-      <p>Nenhum comentário para este anúncio.</p>
+      <p>Nenhum comentário para este anúncio</p>
       {% endfor %}
       <div class="actions">
         <a class="reply" href="#responder">Responder</a>
       </div>
     </div>
   </div>
+  {% empty %}
+O curso ainda não possui anúncio
+{% endfor %}
    <form class="ui reply form" method="POST" action="">
    	{% csrf_token %}
    		{{ form.non_field_errors }}
@@ -44,10 +54,11 @@
 		{{ field }}
 		{{ field.errors }}    
       </div>
-    {% endfor %}
    
-      <button type="submit" class="ui blue labeled submit icon button"><i class="icon edit"></i>Enviar comentário</button>
- 
+   
+      <button type="submit" class="ui teal labeled submit icon button"><i class="icon edit"></i>Enviar comentário</button>
   </form>
+  {% endfor %}
+
 </div>
 </div></div></div>
